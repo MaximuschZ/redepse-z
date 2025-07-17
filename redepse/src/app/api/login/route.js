@@ -8,7 +8,7 @@ export async function POST(request) {
     console.log("Datos recibidos:", email, password);
 
     const [rows] = await pool.query(
-      "SELECT id_user, username, contraseña, rol FROM usuario WHERE email = ? AND contraseña = ?",
+      "SELECT id_user, username, contraseña, tipo FROM usuario WHERE email = ? AND contraseña = ?",
       [email, password]
     );
     console.log("Resultado de la query:", rows);
