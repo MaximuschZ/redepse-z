@@ -5,6 +5,38 @@ import pool from "@/src/lib/db";
 export async function POST(request) {
   try {
     const { email, password } = await request.json();
+    console.log("Datos recibidos:", email, password);
+
+    const [rows] = await pool.query(
+      "SELECT id_user, username, contraseña, rol FROM usuario WHERE email = ? AND contraseña = ?",
+      [email, password]
+    );
+    console.log("Resultado de la query:", rows);
+
+    if (rows.length === 0) {
+      return NextResponse.json(
+        { message: "Correo o contraseña incorrectos" },
+        { status: 401 }
+      );
+    }
+
+    const user = rows[0];
+    const { contraseña, ...userData } = user;
+
+    return NextResponse.json({ user: userData }, { status: 200 });
+  } catch (error) {
+    console.error("Error en login API:", error);
+    return NextResponse.json(
+      { error: "Error", details: error.message },
+      { status: 500 }
+    );
+  }
+}
+
+/*
+export async function POST(request) {
+  try {
+    const { email, password } = await request.json();
 
     const [rows] = await pool.query(
       "SELECT id_user, username, contraseña, rol FROM usuario WHERE email = ? AND contraseña = ?",
@@ -27,7 +59,7 @@ export async function POST(request) {
         { message: "Correo o contraseña incorrectos" },
         { status: 401 }
       );
-    }*/
+    }
 
     const { contraseña, ...userData } = user;
 
@@ -36,8 +68,7 @@ export async function POST(request) {
     console.error("Error en login API:", error);
     return NextResponse.json(
       { error: "Error", details: error.message },
-      { message: "Error en el servidor" },
-      { status: 500 }
+      { message: "Error en el servidor" }
     );
   }
 }
