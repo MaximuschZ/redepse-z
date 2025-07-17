@@ -44,9 +44,9 @@ export default function Login() {
       const { data } = await res.json();
 
       // 🔁 Redirige según el rol
-      if (data.rol === "admin") {
+      if (data.tipo === "admin") {
         router.push("/app/(admin)");
-      } else if (data.rol === "escuela") {
+      } else if (data.tipo === "escuela") {
         router.push("/datos-generales");
       } else {
         setError("Rol desconocido");
