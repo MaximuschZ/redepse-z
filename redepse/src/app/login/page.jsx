@@ -30,8 +30,8 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: data.email,
-          contraseña: data.contraseña,
+          email,
+          contraseña,
         }),
       });
 
@@ -41,12 +41,12 @@ export default function Login() {
         return;
       }
 
-      const { data } = await res.json();
+      const { user } = await res.json();
 
       // 🔁 Redirige según el rol
-      if (data.tipo === "admin") {
+      if (user.tipo === "admin") {
         router.push("/app/(admin)");
-      } else if (data.tipo === "escuela") {
+      } else if (user.tipo === "escuela") {
         router.push("/datos-generales");
       } else {
         setError("Rol desconocido");
