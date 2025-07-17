@@ -1,0 +1,303 @@
+/* Variables */
+:root {
+  --primary-blue: #0070f3;
+  --primary-green: #28a745;
+  --primary-red: #d21f3c;
+  --primary-dark: #2f2f2f;
+  --border-color: #dcdcdc;
+  --background-light: #784646;
+  --background-gray: #f5f5f5;
+  --error-color: #dc3545;
+
+  /* New/Adjusted Variables for a cleaner look */
+  --sidebar-bg: #ffffff; /* Assuming a white sidebar background */
+  --sidebar-border-radius: 12px; /* Slightly more rounded corners for the sidebar */
+  --nav-item-hover-bg: #e0f2fe; /* Lighter blue for hover on nav items */
+  --nav-item-active-bg: #d0edff; /* A slightly deeper light blue for active */
+  --text-light-gray: #6b7280; /* A slightly lighter grey for secondary text */
+  --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* More pronounced but soft shadow for sidebar */
+}
+
+/* Base */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background-gray);
+  font-family: "Inter", sans-serif, "Segoe UI"; /* Prioritize a modern font like Inter */
+}
+
+/* Sidebar (reutilizable) */
+.sidebar {
+  width: 280px;
+  background: var(--sidebar-bg);
+  /* border-right: 1px solid var(--border-color); */ /* Removing border for a floating effect */
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem; /* Give some space from the top */
+  height: calc(100vh - 3rem); /* Adjust height to fit within the container with top/bottom margin */
+  border-radius: var(--sidebar-border-radius); /* Apply border-radius */
+  box-shadow: var(--shadow-light); /* Add a subtle shadow for depth */
+  display: flex; /* Use flexbox for internal layout */
+  flex-direction: column; /* Stack items vertically */
+  margin: 1.5rem; /* Add margin around the sidebar itself */
+}
+
+.sidebarHeader {
+  padding-bottom: 1.5rem; /* Add more space below the header */
+  border-bottom: 1px solid var(--border-color); /* Subtle separator */
+  margin-bottom: 1.5rem; /* Space before nav list */
+}
+
+.sidebarHeader h2 {
+  font-size: 1.35rem; /* Slightly larger for emphasis */
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+  font-weight: 700; /* Bolder for titles */
+}
+
+.sidebarHeader h3 {
+  font-size: 0.9rem; /* Slightly smaller, more subtle */
+  color: var(--text-light-gray); /* Lighter grey for subtitle */
+}
+
+.navList {
+  margin-top: 0; /* Reset margin as we added it to sidebarHeader */
+  flex-grow: 1; /* Allow the nav list to take up available space */
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.navItem {
+  padding: 0.85rem 1.2rem; /* Slightly more padding */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-light-gray); /* Default text color for nav items */
+  cursor: pointer;
+  transition: all 0.2s ease; /* Faster transition */
+  border-left: none; /* Remove left border */
+  margin-bottom: 0.4rem; /* Slightly less margin between items */
+  border-radius: 8px; /* Rounded corners for individual nav items */
+  font-weight: 500; /* Medium font weight */
+}
+
+.navItem:hover {
+  color: var(--primary-blue); /* Change hover color to primary blue */
+  background-color: var(--nav-item-hover-bg); /* Use the new hover background color */
+  transform: translateX(3px); /* Subtle slide effect on hover */
+}
+
+.active {
+  color: var(--primary-blue);
+  font-weight: 600;
+  background-color: var(--nav-item-active-bg); /* Use the new active background color */
+  /* border-left-color: var(--primary-blue); */ /* Removed border-left for a cleaner look */
+  box-shadow: 0 2px 8px rgba(0, 112, 243, 0.1); /* Subtle shadow for active item */
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--background-light);
+  /* Added to align with the sidebar's overall margin */
+  margin: 1.5rem;
+  border-radius: var(--sidebar-border-radius); /* Match sidebar border-radius */
+  box-shadow: var(--shadow-light); /* Match sidebar shadow */
+}
+
+.header {
+  background: linear-gradient(to right, #0e6ac4, var(--primary-red));
+  padding: 1.5rem 2rem;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add shadow to header */
+}
+
+.title {
+  font-size: 1.8rem; /* Slightly larger title */
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.35rem; /* Slightly larger subtitle */
+  opacity: 0.95; /* Less opaque */
+  font-weight: 500;
+}
+
+/* Form */
+.form {
+  max-width: 500px;
+  background: white;
+  padding: 1.75rem;
+  border-radius: 12px; /* More rounded form */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.35rem; /* Slightly more space */
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0.6rem; /* More space below label */
+  display: block;
+  color: var(--primary-dark);
+  font-size: 0.95rem; /* Slightly smaller label font */
+}
+
+.required::after {
+  content: " *";
+  color: var(--primary-red);
+  margin-left: 3px; /* Small space after asterisk */
+}
+
+.input,
+.select {
+  background-color: #fcfcfc; /* Slightly off-white background */
+  color: black;
+  width: 100%;
+  padding: 0.85rem; /* More vertical padding */
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* More rounded input fields */
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for box-shadow too */
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.25); /* Stronger, more distinct focus glow */
+}
+
+.error {
+  border-color: var(--error-color);
+}
+
+.errorMessage {
+  color: var(--error-color);
+  font-size: 0.85rem; /* Slightly smaller error message */
+  margin-top: 0.4rem; /* More space above error message */
+  display: block;
+}
+
+/* Buttons */
+.button {
+  padding: 0.8rem 1.6rem; /* More padding for buttons */
+  border: none;
+  border-radius: 8px; /* More rounded buttons */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem; /* Slightly more gap for icon */
+  font-size: 1rem; /* Consistent font size */
+}
+
+.buttonPrimary {
+  background-color: var(--primary-blue);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 112, 243, 0.2); /* Subtle shadow for primary button */
+}
+
+.buttonPrimary:hover {
+  background-color: #005bb5;
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 112, 243, 0.3); /* Stronger shadow on hover */
+}
+
+.buttonSuccess {
+  background-color: var(--primary-green);
+  color: white;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2); /* Subtle shadow for success button */
+}
+
+.buttonSuccess:hover {
+  background-color: #218838;
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3); /* Stronger shadow on hover */
+}
+
+.button:disabled {
+  opacity: 0.5; /* Slightly more opaque when disabled */
+  cursor: not-allowed;
+  box-shadow: none; /* No shadow when disabled */
+  transform: none; /* No transform when disabled */
+}
+
+/* Saved Disciplines */
+.savedSection {
+  background: white;
+  padding: 1.75rem; /* More padding */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+  margin-bottom: 2rem;
+}
+
+.savedSection h3 {
+  margin-top: 0;
+  color: var(--primary-dark);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem; /* More padding below heading */
+  font-size: 1.3rem; /* Slightly larger heading */
+}
+
+.savedSection ul {
+  padding-left: 1.5rem; /* More padding for list */
+  margin-top: 1rem; /* More space above list */
+}
+
+.savedSection li {
+  margin: 0.85rem 0; /* More margin for list items */
+  color: #555;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary-green);
+  color: white;
+  padding: 0.9rem 1.8rem; /* More padding for toast */
+  border-radius: 8px; /* More rounded toast */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for toast */
+  animation: slideIn 0.4s ease-out; /* Slightly longer animation */
+  font-weight: 500; /* Medium font weight */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(30px); /* Slide further */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logoutButton {
+  margin-top: auto; /* Push the logout button to the bottom */
+  padding: 0.75rem 1.25rem; /* More padding */
+  background-color: #dc2626; /* Tailwind-style strong red */
+  color: white;
+  border: none;
+  border-radius: 0.5rem; /* More rounded corners */
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Add transform transition */
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.2); /* Subtle shadow */
+  width: 100%; /* Make button full width */
+}
+
+.logoutButton:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 5px 12px rgba(220, 38, 38, 0.3); /* Stronger shadow on hover */
+}
