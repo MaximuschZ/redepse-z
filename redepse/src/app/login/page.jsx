@@ -31,7 +31,7 @@ export default function Login() {
         },
         body: JSON.stringify({
           email,
-          contraseña,
+          password,
         }),
       });
 
