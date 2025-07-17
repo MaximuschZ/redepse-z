@@ -45,7 +45,7 @@ export default function Login() {
 
       // 🔁 Redirige según el rol
       if (user.tipo === "admin") {
-        router.push("/app/(admin)");
+        router.push("/escuelas/panel");
       } else if (user.tipo === "escuela") {
         router.push("/datos-generales");
       } else {
