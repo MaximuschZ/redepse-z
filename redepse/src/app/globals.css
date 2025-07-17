@@ -119,7 +119,7 @@ nav ul li a:hover {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.9)
     ),
-    url("../assets/l_1722044959.jpg");
+    url("/assets/l_1722044959.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
