@@ -1,3 +1,13 @@
+/* Variables */
+:root {
+  --primary-blue: #0070f3;
+  --primary-green: #28a745;
+  --primary-red: #d21f3c;
+  --background-light: #fafafa;
+  --border-color: #dcdcdc;
+  --error-color: #dc3545;
+}
+
 /* Contenedor principal */
 .container {
   display: flex;

@@ -2,6 +2,7 @@
 "use client";
 
 import "./globals.css";
+import "./page.module.css";
 import { useEffect } from "react";
 
 export default function HomePage() {

@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Sidebar } from "@/src/app/components/Sidebar";
-import styles from "./alumnos.module.css";
+import { SidebarAdmin } from "@/src/app/components/SidebarAdmin";
+import styles from "./entrenadores.module.css";
 
-export default function Alumnos() {
-  const [alumnos, setAlumnos] = useState([]);
+export default function Entrenadores() {
+  const [entrenadores, setEntrenadores] = useState([]);
   const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,24 +23,24 @@ export default function Alumnos() {
 
   // Obtener alumnos al cargar el componente
   useEffect(() => {
-    const fetchAlumnos = async () => {
+    const fetchEntrenadores = async () => {
       try {
-        const response = await fetch("/api/alumnos");
-        if (!response.ok) throw new Error("Error al obtener alumnos");
+        const response = await fetch("/api/entrenadores");
+        if (!response.ok) throw new Error("Error al obtener entrenadores");
         const data = await response.json();
-        setAlumnos(data);
+        setEntrenadores(data);
       } catch (err) {
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchAlumnos();
+    fetchEntrenadores();
   }, []);
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("/api/alumnos", {
+      const response = await fetch("/api/entrenadores", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export default function Alumnos() {
 
   return (
     <div className={styles.container}>
-      <Sidebar activeItem="Solicitudes pendientes" />
+      <SidebarAdmin activeItem="Solicitudes pendientes" />
 
       <main className={styles.mainContent}>
         <header className={styles.header}>
@@ -88,10 +88,10 @@ export default function Alumnos() {
 
         <div className={styles.registrationContainer}>
           <div className={styles.studentsList}>
-            <h3>Alumnos registrados ({alumnos.length})</h3>
+            <h3>Entrenadores registrados ({entrenadores.length})</h3>
             {isLoading ? (
-              <p className={styles.loading}>Cargando alumnos...</p>
-            ) : alumnos.length > 0 ? (
+              <p className={styles.loading}>Cargando entrenadores...</p>
+            ) : entrenadores.length > 0 ? (
               <div className={styles.tableWrapper}>
                 <table className={styles.table}>
                   <thead>
@@ -106,22 +106,24 @@ export default function Alumnos() {
                     </tr>
                   </thead>
                   <tbody>
-                    {alumnos.map((alumno) => (
-                      <tr key={alumno.dni_alumno}>
-                        <td>{alumno.dni_alumno}</td>
-                        <td>{alumno.nombre}</td>
-                        <td>{alumno.apellido}</td>
-                        <td>{alumno.fecha_nac}</td>
-                        <td>{alumno.disciplina}</td>
-                        <td>{alumno.domicilio}</td>
-                        <td>{alumno.id_periodo}</td>
+                    {entrenadores.map((entrenador) => (
+                      <tr key={entrenador.dni_entrenador}>
+                        <td>{entrenador.dni_entrenador}</td>
+                        <td>{entrenador.nombre}</td>
+                        <td>{entrenador.apellido}</td>
+                        <td>{entrenador.fecha_nac}</td>
+                        <td>{entrenador.disciplina}</td>
+                        <td>{entrenador.domicilio}</td>
+                        <td>{entrenador.id_periodo}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             ) : (
-              <p className={styles.noData}>Aún no hay alumnos registrados</p>
+              <p className={styles.noData}>
+                Aún no hay entrenadores registrados
+              </p>
             )}
           </div>
         </div>

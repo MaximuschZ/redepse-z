@@ -1,13 +1,15 @@
+/* Variables */
 .theme-vars {
   :global(:root) {
-    --background: #ffffff;
-    --foreground: #171717;
     --primary-blue: #0070f3;
     --primary-green: #28a745;
     --primary-red: #d21f3c;
-    --background-light: #fafafa;
+    --primary-dark: #2f2f2f;
     --border-color: #dcdcdc;
+    --background-light: #784646;
+    --background-gray: #f5f5f5;
     --error-color: #dc3545;
+
     /* New/Adjusted Variables for a cleaner look */
     --sidebar-bg: #ffffff; /* Assuming a white sidebar background */
     --sidebar-border-radius: 12px; /* Slightly more rounded corners for the sidebar */
