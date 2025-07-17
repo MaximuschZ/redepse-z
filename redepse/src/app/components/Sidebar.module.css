@@ -1,23 +1,3 @@
-/* Variables */
-:root {
-  --primary-blue: #0070f3;
-  --primary-green: #28a745;
-  --primary-red: #d21f3c;
-  --primary-dark: #2f2f2f;
-  --border-color: #dcdcdc;
-  --background-light: #784646;
-  --background-gray: #f5f5f5;
-  --error-color: #dc3545;
-
-  /* New/Adjusted Variables for a cleaner look */
-  --sidebar-bg: #ffffff; /* Assuming a white sidebar background */
-  --sidebar-border-radius: 12px; /* Slightly more rounded corners for the sidebar */
-  --nav-item-hover-bg: #e0f2fe; /* Lighter blue for hover on nav items */
-  --nav-item-active-bg: #d0edff; /* A slightly deeper light blue for active */
-  --text-light-gray: #6b7280; /* A slightly lighter grey for secondary text */
-  --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* More pronounced but soft shadow for sidebar */
-}
-
 /* Base */
 .container {
   display: flex;
@@ -34,7 +14,9 @@
   padding: 1.5rem;
   position: sticky;
   top: 1.5rem; /* Give some space from the top */
-  height: calc(100vh - 3rem); /* Adjust height to fit within the container with top/bottom margin */
+  height: calc(
+    100vh - 3rem
+  ); /* Adjust height to fit within the container with top/bottom margin */
   border-radius: var(--sidebar-border-radius); /* Apply border-radius */
   box-shadow: var(--shadow-light); /* Add a subtle shadow for depth */
   display: flex; /* Use flexbox for internal layout */
@@ -83,14 +65,18 @@
 
 .navItem:hover {
   color: var(--primary-blue); /* Change hover color to primary blue */
-  background-color: var(--nav-item-hover-bg); /* Use the new hover background color */
+  background-color: var(
+    --nav-item-hover-bg
+  ); /* Use the new hover background color */
   transform: translateX(3px); /* Subtle slide effect on hover */
 }
 
 .active {
   color: var(--primary-blue);
   font-weight: 600;
-  background-color: var(--nav-item-active-bg); /* Use the new active background color */
+  background-color: var(
+    --nav-item-active-bg
+  ); /* Use the new active background color */
   /* border-left-color: var(--primary-blue); */ /* Removed border-left for a cleaner look */
   box-shadow: 0 2px 8px rgba(0, 112, 243, 0.1); /* Subtle shadow for active item */
 }

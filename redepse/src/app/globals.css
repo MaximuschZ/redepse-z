@@ -1,6 +1,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-blue: #0070f3;
+  --primary-green: #28a745;
+  --primary-red: #d21f3c;
+  --background-light: #fafafa;
+  --border-color: #dcdcdc;
+  --error-color: #dc3545;
+  /* New/Adjusted Variables for a cleaner look */
+  --sidebar-bg: #ffffff; /* Assuming a white sidebar background */
+  --sidebar-border-radius: 12px; /* Slightly more rounded corners for the sidebar */
+  --nav-item-hover-bg: #e0f2fe; /* Lighter blue for hover on nav items */
+  --nav-item-active-bg: #d0edff; /* A slightly deeper light blue for active */
+  --text-light-gray: #6b7280; /* A slightly lighter grey for secondary text */
+  --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* More pronounced but soft shadow for sidebar */
 }
 
 @media (prefers-color-scheme: dark) {
